@@ -1,0 +1,333 @@
+/* ===== Global Styles ===== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===== Layout ===== */
+.main-content {
+    margin-left: 295px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    flex: 1;
+}
+
+.dashboard {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===== Card Styles ===== */
+.card {
+    background: #ffffff;
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 120px;
+    max-height: fit-content;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.card-body {
+    width: 100%;
+    height: 280px;
+}
+
+.total-card .card-body {
+    height: auto !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-card .card-body {
+    height: auto;
+    display: block;
+    padding: 0;
+}
+
+#calendar {
+    max-height: 300px; /* Decrease height */
+    overflow-y: auto;
+    padding: 5px; /* Less padding */
+    font-size: 12px; /* Reduce font size */
+}
+
+.calendar-card {
+    max-height: 600px;
+}
+
+.calendar-card .card-body {
+    max-height: 350px; /* Adjust card size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-card .card-body {
+    max-height: 350px; /* Card height stays controlled */
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-x: auto; /* Allow horizontal scroll if needed */
+    overflow-y: hidden; /* Hide vertical overflow */
+    padding: 10px; /* Small padding inside */
+}
+
+/* ===== Dropdown Styles ===== */
+.dropdown-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-wrapper .list-items {
+    display: none;
+}
+
+.dropdown-wrapper.open .list-items,
+.select-btn.open~.list-items {
+    display: block;
+}
+
+.select-btn {
+    display: flex;
+    height: 50px;
+    font-style: italic;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.select-btn .btn-text {
+    font-size: 17px;
+    font-weight: 400;
+    color: #333;
+}
+
+.select-btn .arrow-dwn {
+    display: flex;
+    height: 21px;
+    width: 21px;
+    color: #000;
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.select-btn.open .arrow-dwn {
+    transform: rotate(-180deg);
+}
+
+/* Dropdown List Items */
+.list-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    width: 90%;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+}
+
+.list-items .item {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 0 15px;
+    border-radius: 8px;
+}
+
+.list-items .item:hover {
+    background-color: #e7edfe;
+}
+
+.item .item-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+}
+
+/* Checkbox Styling */
+.item .checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+    margin-right: 12px;
+    border-radius: 4px;
+    border: 1.5px solid #c0c0c0;
+    transition: all 0.3s ease-in-out;
+}
+
+.item.checked .checkbox {
+    background-color: #4070f4;
+    border-color: #4070f4;
+}
+
+.checkbox .check-icon {
+    color: #fff;
+    font-size: 11px;
+    transform: scale(0);
+    transition: all 0.2s ease-in-out;
+}
+
+.item.checked .check-icon {
+    transform: scale(1);
+}
+
+/* ===== Chart & Count Styling ===== */
+.total-applicants-count .count {
+    font-size: 32px;
+    text-align: center;
+    color: #333;
+}
+
+/* ===== Loading Spinner ===== */
+.loader-spinner {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    border-top: 5px solid #4070f4;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+.modal {
+    display: none;
+    /* Will be changed to flex when shown */
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* This will now cover the entire screen */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.kanban-board {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.kanban-column {
+    flex: 1;
+    background: #f4f5f7;
+    border-radius: 10px;
+    padding: 10px;
+    min-width: 250px;
+    height: 100%; /* 🛠 Stretch to match parent height */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Internal scroll if many items */
+}
+
+.kanban-column h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.kanban-item {
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.2s;
+    flex-shrink: 0; /* Prevent from stretching */
+}
+
+.kanban-item:hover {
+    background-color: #e2e6ea;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 1024px) {
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wide-card {
+        grid-column: span 1;
+    }
+
+    .calendar-card {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .card-body {
+        height: 220px;
+    }
+}

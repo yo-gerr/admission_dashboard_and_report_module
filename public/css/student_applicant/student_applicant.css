@@ -1,0 +1,264 @@
+/* ===== Global Styles ===== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
+}
+
+/* ===== General Card Styling ===== */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  width: 80%; /* Ensures all cards, including status and college cards, have the same width */
+  margin: 20px auto;
+  border-left: 8px solid #000; /* Default border color */
+}
+
+/* ===== Main Content Styling ===== */
+.main-content {
+  margin-left: 250px; 
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px; /* Adjust sidebar width */
+  }
+
+  .main-content {
+    margin-left: 200px; /* Matches sidebar width */
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    position: absolute; /* Allow sidebar to overlap */
+    width: 100%; /* Full width */
+    height: auto; /* Adjust height */
+    top: 0;
+    left: 0;
+    display: none; /* Hide by default */
+  }
+
+  .main-content {
+    margin-left: 0; /* Main content takes full width */
+  }
+}
+
+/* ===== Wrapper Styling ===== */
+.status-content-wrapper,
+.college-programs-content-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack title and card vertically */
+  align-items: center; /* Center align cards */
+  width: 100%; /* Full width of wrapper */
+  box-sizing: border-box; /* Include padding in width calculations */
+}
+
+/* ===== Status Styling ===== */
+.status-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px; /* Spacing between title and card */
+  width: 80%; /* Match card width */
+  text-align: left; /* Align the title to the left */
+}
+
+.status-card {
+  /* Uniform width inherited from .card class */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  width: 80%; /* Matches the general card width for uniformity */
+  margin: 20px 0;
+}
+
+.status-tracker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  overflow-x: auto;
+  width: 100%; 
+  z-index: -1;
+}
+
+.status-tracker .steps {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.step .label {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.steps .circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  color: #999;
+  font-size: 22px;
+  font-weight: 500;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid #e0e0e0;
+  transition: all 200ms ease;
+  transition-delay: 0s;
+  z-index: 1;
+}
+
+.steps .circle.active {
+  transition-delay: 100ms;
+  border-color: #4070f4;
+  color: #4070f4;
+}
+
+.steps .progress-bar {
+  position: absolute;
+  height: 4px;
+  width: calc(100% - 50px); /* Adjust width to account for spacing */
+  background: #e0e0e0;
+  z-index: 0;
+  top: 36%; /* Align the progress bar in the middle */
+  left: 25px; /* Center the bar by offsetting */
+  transform: translateY(-50%); /* Ensure it aligns perfectly */
+}
+
+.progress-bar .indicator {
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  background: #4070f4;
+  transition: all 300ms ease;
+}
+.container .buttons {
+  display: flex;
+  gap: 20px;
+}
+.buttons button {
+  padding: 8px 25px;
+  background: #4070f4;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  transition: all 200ms linear;
+}
+.buttons button:active {
+  transform: scale(0.97);
+}
+.buttons button:disabled {
+  background: #87a5f8;
+  cursor: not-allowed;
+}
+
+/* ===== College Programs Section ===== */
+.college-programs-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px; /* Spacing between title and card */
+  width: 80%; /* Match card width */
+  text-align: left; /* Align the title to the left */
+}
+
+.college-container {
+  /* Uniform width inherited from .card class */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  width: 80%; /* Matches the general card width for uniformity */
+  margin: 20px auto;
+  position: relative;
+}
+
+.college-name {
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 10px 10px 0 0;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: calc(100% - 40px);
+  border-bottom: 1px solid #ddd;
+  z-index: 1;
+  background-color: #555;
+  color: #fff; /* Text color */
+}
+
+.program-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px;
+}
+
+.program-list li {
+  font-size: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.program-list li::before {
+  content: "»";
+  color: #000;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+/* Responsive College Section */
+@media only screen and (max-width: 480px) {
+  .college-name {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .program-list li {
+    font-size: 14px;
+    padding: 8px 0;
+  }
+}
+
+/* College-Specific Borders */
+.college-name.college-of-engineering {
+  background-color: green;
+}
+
+.college-name.college-of-business {
+  background-color: blue;
+}
+
+.college-name.college-of-arts-and-sciences {
+  background-color: purple;
+}
